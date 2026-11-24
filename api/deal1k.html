@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
     <head>
         <meta charset="utf-8" />
@@ -11,7 +11,7 @@
         <meta property="og:description" content="Flash Sale Deal với các Deal 1K, 9K, 28K và theo dõi những sản phẩm giảm giá hấp dẫn nhất!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://addlivetag.com/index.html" />
-        <meta name="theme-color" content="#0f172a" />
+        <meta name="theme-color" content="#ee4d2d" />
 
         <!-- Preload critical resources -->
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -27,6 +27,181 @@
 
         <link rel="stylesheet" href="deal.css?v=251125_03" />
         <link rel="stylesheet" href="/deal.css?v=251125_03" />
+            <!-- Shopee Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet" />
+        <style>
+            :root {
+                --shopee-orange: #ee4d2d;
+                --shopee-orange-hover: #d73211;
+                --shopee-light-orange: #ffeee8;
+                --shopee-bg: #f5f5f5;
+                --shopee-text: #222222;
+                --shopee-muted: #757575;
+                --shopee-border: #e8e8e8;
+                --shopee-card: #ffffff;
+            }
+            body {
+                font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+                background-color: var(--shopee-bg) !important;
+                color: var(--shopee-text) !important;
+            }
+            /* Shopee Orange Header */
+            header.navbar {
+                background: var(--shopee-orange) !important;
+                border-bottom: none !important;
+                box-shadow: 0 2px 10px rgba(238, 77, 45, 0.3) !important;
+            }
+            header.navbar .navbar-brand {
+                color: #fff !important;
+                font-weight: 800 !important;
+                font-size: 1.3rem !important;
+            }
+            header.navbar .btn-outline-light {
+                border-color: rgba(255,255,255,0.6) !important;
+                color: #fff !important;
+            }
+            header.navbar .btn-outline-light:hover {
+                background: rgba(255,255,255,0.15) !important;
+            }
+            header.navbar .btn-outline-danger {
+                border-color: rgba(255,255,255,0.6) !important;
+                color: #fff !important;
+                background: transparent !important;
+            }
+            header.navbar .btn-outline-danger:hover {
+                background: rgba(255,255,255,0.15) !important;
+            }
+            header.navbar #currentMillisWithMillis {
+                color: rgba(255,255,255,0.9) !important;
+            }
+            /* Shopee logo icon */
+            header.navbar .navbar-brand span:first-child {
+                filter: drop-shadow(0 0 6px rgba(255,255,255,0.8)) !important;
+            }
+            /* Hero ticker Shopee style */
+            .hero-ticker-bar {
+                background: linear-gradient(90deg, #ee4d2d 0%, #ff6b35 100%) !important;
+                color: #fff !important;
+                border-radius: 4px !important;
+            }
+            .hero-ticker-tag {
+                background: rgba(0,0,0,0.2) !important;
+                color: #fff !important;
+            }
+            .hero-ticker-text {
+                color: rgba(255,255,255,0.95) !important;
+            }
+            /* Filter section */
+            .filter-section {
+                background: #fff !important;
+                border: 1px solid var(--shopee-border) !important;
+                border-radius: 4px !important;
+            }
+            .filter-title {
+                color: var(--shopee-muted) !important;
+            }
+            .pill {
+                background: #fff !important;
+                border: 1px solid var(--shopee-border) !important;
+                color: var(--shopee-text) !important;
+                border-radius: 2px !important;
+            }
+            .pill.active, .pill:hover {
+                background: var(--shopee-light-orange) !important;
+                border-color: var(--shopee-orange) !important;
+                color: var(--shopee-orange) !important;
+            }
+            /* Toolbar */
+            .toolbar {
+                background: #fff !important;
+                border: 1px solid var(--shopee-border) !important;
+                border-radius: 4px !important;
+            }
+            .search-input {
+                border-radius: 2px !important;
+            }
+            .search-input:focus {
+                border-color: var(--shopee-orange) !important;
+                box-shadow: 0 0 0 2px rgba(238,77,45,0.15) !important;
+            }
+            .sort-select:focus {
+                border-color: var(--shopee-orange) !important;
+                box-shadow: 0 0 0 2px rgba(238,77,45,0.15) !important;
+            }
+            /* Tabs */
+            .nav-tabs .nav-link.active {
+                color: var(--shopee-orange) !important;
+                border-bottom-color: var(--shopee-orange) !important;
+                border-bottom-width: 2px !important;
+            }
+            .nav-tabs .nav-link:hover {
+                color: var(--shopee-orange) !important;
+            }
+            /* Deal card */
+            .deal-card {
+                background: #fff !important;
+                border-radius: 4px !important;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important;
+            }
+            .deal-card:hover {
+                box-shadow: 0 4px 16px rgba(238,77,45,0.15) !important;
+                transform: translateY(-2px) !important;
+            }
+            .deal-title a, .link-out {
+                color: var(--shopee-text) !important;
+            }
+            .deal-title a:hover, .link-out:hover {
+                color: var(--shopee-orange) !important;
+            }
+            .current-price {
+                color: var(--shopee-orange) !important;
+                font-weight: 800 !important;
+            }
+            /* Buy button */
+            .btn-buy, .btn-action.btn-buy {
+                background: var(--shopee-orange) !important;
+                color: #fff !important;
+                border-radius: 2px !important;
+                font-weight: 700 !important;
+            }
+            .btn-buy:hover {
+                background: var(--shopee-orange-hover) !important;
+            }
+            /* Bottom nav */
+            .bottom-nav {
+                background: #fff !important;
+                border-top: 1px solid var(--shopee-border) !important;
+            }
+            .bottom-nav-item.active {
+                color: var(--shopee-orange) !important;
+            }
+            /* FAB */
+            .fab {
+                background: var(--shopee-orange) !important;
+                color: #fff !important;
+            }
+            /* Badge */
+            .badge-green { background: #26aa99 !important; }
+            /* Modals */
+            .modal-header {
+                background: var(--shopee-orange) !important;
+                color: #fff !important;
+            }
+            .modal-title { color: #fff !important; }
+            .modal-close { color: #fff !important; }
+            .btn-primary {
+                background: var(--shopee-orange) !important;
+                border-color: var(--shopee-orange) !important;
+            }
+            .btn-primary:hover {
+                background: var(--shopee-orange-hover) !important;
+                border-color: var(--shopee-orange-hover) !important;
+            }
+            /* Notification */
+            .notification { border-left-color: var(--shopee-orange) !important; }
+        </style>
     </head>
 
     <body>
@@ -54,7 +229,6 @@
                         <span id="reloadText">🔄️ Làm mới</span>
                         <span id="reloadSpinner" class="loading-spinner d-none"></span>
                     </button>
-                    <button id="btnKol" class="btn btn-sm btn-outline-success">Nếu bạn là KOL</button>
                     <button id="btnUser" class="btn btn-sm btn-outline-success d-none">Đăng nhập</button>
                     <button id="btnReset" class="btn btn-sm btn-outline-danger">Reset</button>
                 </div>
@@ -287,35 +461,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal Kol -->
-        <div class="modal" id="kolModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Hướng dẫn tạo link KOL</h5>
-                    <button type="button" class="modal-close" id="closeKolModal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>🔥 Deal 1K update hàng giờ. Nhập <code>aff_id</code> của bạn vào ô dưới để tạo link nhanh:</p>
-                    <div class="input-group mb-3">
-                        <input id="kolIdInput" type="text" class="form-control" placeholder="Nhập affiliate ID của bạn" />
-                        <button id="generateLinkKol" class="btn btn-primary">Tạo Link</button>
-                    </div>
-                    <div id="generatedKolLinkWrapper" style="display: none">
-                        <p>Link của bạn:</p>
-                        <div class="input-group mb-3">
-                            <input id="generatedKolLink" type="text" class="form-control" readonly />
-                            <button id="copyKolLink" class="btn btn-secondary">Copy</button>
-                        </div>
-                        <small class="muted">Bạn có thể rút gọn link tại <a href="https://shp.today" target="_blank" rel="noopener noreferrer" class="link-out">shp.today</a>.</small>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="closeKolModalBtn">Đóng</button>
-                </div>
-            </div>
-        </div>
-
         <!-- Modal sắp xếp cho mobile -->
         <div class="modal" id="sortModal">
             <div class="modal-content">
@@ -409,3 +554,4 @@
         <!-- End Meta Pixel Code -->
     </body>
 </html>
+

@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">Chi tiết sản phẩm | Shopee Flash Sale</title>
+    <meta name="description" id="pageDesc" content="Xem chi tiết sản phẩm, đánh giá và săn deal flash sale giá cực rẻ trên Shopee" />
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="https://addlivetag.com/favicon.ico" type="image/x-icon" />
+
+    <style>
+        :root {
+            --shopee-orange: #ee4d2d;
+            --shopee-orange-hover: #d73211;
+            --shopee-light-orange: #ffeee8;
+            --shopee-bg: #f5f5f5;
+            --shopee-text: #222222;
+            --shopee-muted: #757575;
+            --shopee-border: #e8e8e8;
+            --shopee-card: #ffffff;
+            --shopee-mall: #d0011b;
+            --shopee-yellow: #ffb800;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--shopee-bg);
+            color: var(--shopee-text);
+            line-height: 1.5;
+            padding-bottom: 70px;
+        }
+
+        /* Shopee Header */
+        .shopee-top-bar {
+            background: var(--shopee-orange);
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 4px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 14px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        .top-bar-links a:hover {
+            opacity: 1;
+        }
+
+        .shopee-main-header {
+            background: var(--shopee-orange);
+            color: #fff;
+            padding: 14px 0 16px 0;
+            box-shadow: 0 2px 10px rgba(238, 77, 45, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .shopee-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+        .shopee-logo span.badge-deal {
+            font-size: 0.7rem;
+            background: #fff;
+            color: var(--shopee-orange);
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-weight: 800;
+        }
+
+        .shopee-search-bar {
+            flex: 1;
+            display: flex;
+            background: #fff;
+            border-radius: var(--radius-sm);
+            padding: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .shopee-search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+        .shopee-search-bar button {
+            background: var(--shopee-orange);
+            border: none;
+            color: #fff;
+            padding: 0 20px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .shopee-search-bar button:hover {
+            background: var(--shopee-orange-hover);
+        }
+
+        .header-cart-icon {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            padding: 0 10px;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: 0px;
+            background: #fff;
+            color: var(--shopee-orange);
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 1px 6px;
+            border-radius: 99px;
+            border: 2px solid var(--shopee-orange);
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 0;
+            font-size: 0.85rem;
+            color: var(--shopee-muted);
+            flex-wrap: wrap;
+        }
+        .breadcrumbs a {
+            color: #0055aa;
+            text-decoration: none;
+        }
+        .breadcrumbs a:hover {
+            color: var(--shopee-orange);
+        }
+        .breadcrumbs span.current {
+            color: var(--shopee-text);
+            max-width: 350px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Product Overview Card */
+        .product-overview {
+            background: var(--shopee-card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 450px 1fr;
+            gap: 36px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+        }
+
+        /* Image Gallery */
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .main-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #fafafa;
+            border: 1px solid var(--shopee-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .main-image-wrapper:hover .main-image {
+            transform: scale(1.05);
+        }
+        .mall-tag-floating {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--shopee-mall);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        .discount-tag-floating {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 230, 0, 0.95);
+            color: var(--shopee-orange);
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            line-height: 1.1;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+
+        .thumbnails-row {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .thumb-item {
+            width: 76px;
+            height: 76px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            flex-shrink: 0;
+            background: #f8f8f8;
+            transition: all 0.2s;
+        }
+        .thumb-item.active, .thumb-item:hover {
+            border-color: var(--shopee-orange);
+        }
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-share-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--shopee-muted);
+            margin-top: 8px;
+            padding-top: 10px;
+            border-top: 1px solid var(--shopee-border);
+        }
+        .social-share-row a {
+            color: var(--shopee-text);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Product Details Info (Right Column) */
+        .product-info-col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .product-title-row h1 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.45;
+            color: var(--shopee-text);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .badge-mall-inline {
+            background: var(--shopee-mall);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 2px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        /* Rating & Sold Row */
+        .rating-sold-row {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 0.9rem;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--shopee-border);
+        }
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--shopee-orange);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        .rating-count, .sold-count {
+            color: var(--shopee-muted);
+        }
+        .rating-count b, .sold-count b {
+            color: var(--shopee-text);
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        /* Flash Sale Banner */
+        .flash-sale-timer-bar {
+            background: linear-gradient(90deg, #ee4d2d 0%, #ff7337 100%);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+        .flash-sale-timer-bar .fs-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .countdown-boxes {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+        .time-box {
+            background: #000;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 800;
+        }
+
+        /* Price Box */
+        .price-box {
+            background: #fafafa;
+            padding: 18px 22px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+        .current-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--shopee-orange);
+            font-family: inherit;
+        }
+        .original-price {
+            font-size: 1rem;
+            color: var(--shopee-muted);
+            text-decoration: line-through;
+        }
+        .discount-badge {
+            background: var(--shopee-orange);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        /* Info Attributes Row (Voucher, Shipping, etc.) */
+        .info-item-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            align-items: center;
+            font-size: 0.9rem;
+            gap: 12px;
+        }
+        .info-label {
+            color: var(--shopee-muted);
+        }
+        .voucher-tags-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .voucher-pill {
+            background: var(--shopee-light-orange);
+            color: var(--shopee-orange);
+            border: 1px dashed var(--shopee-orange);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 2px;
+        }
+        .shipping-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--shopee-text);
+        }
+        .shipping-badge {
+            color: #00bfa5;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Variations / Options */
+        .variation-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .variation-btn {
+            background: #fff;
+            border: 1px solid var(--shopee-border);
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--shopee-text);
+        }
+        .variation-btn.active, .variation-btn:hover {
+            border-color: var(--shopee-orange);
+            color: var(--shopee-orange);
+        }
+
+        /* Quantity Box */
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .qty-controls {
+            display: flex;
+            border: 1px solid var(--shopee-border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .qty-btn {
+            background: #fff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .qty-btn:hover {
+            background: #f5f5f5;
+        }
+        .qty-input {
+            width: 45px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid var(--shopee-border);
+            border-right: 1px solid var(--shopee-border);
+            font-weight: 600;
+            font-family: inherit;
+        }
+        .stock-available {
+            font-size: 0.85rem;
+            color: var(--shopee-muted);
+        }
+
+        /* CTA Actions */
+        .cta-action-row {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .btn-add-cart {
+            background: var(--shopee-light-orange);
+            color: var(--shopee-orange);
+            border: 1px solid var(--shopee-orange);
+            border-radius: var(--radius-sm);
+            padding: 14px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .btn-add-cart:hover {
+            background: #ffe3d6;
+        }
+
+        .btn-buy-now-shopee {
+            flex: 1;
+            background: var(--shopee-orange);
+            color: #fff !important;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 14px 28px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(238, 77, 45, 0.4);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .btn-buy-now-shopee:hover {
+            background: var(--shopee-orange-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(238, 77, 45, 0.5);
+        }
+
+        /* Shopee Guarantee Assurance */
+        .shopee-guarantee-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--shopee-muted);
+            border-top: 1px solid var(--shopee-border);
+            padding-top: 14px;
+            margin-top: 6px;
+        }
+        .shopee-guarantee-box span {
+            color: var(--shopee-orange);
+            font-weight: 700;
+        }
+
+        /* Shop Information Box */
+        .shop-info-card {
+            background: var(--shopee-card);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .shop-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .shop-avatar {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            border: 1px solid var(--shopee-border);
+            object-fit: cover;
+            background: #fafafa;
+        }
+        .shop-details h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .shop-status-text {
+            font-size: 0.8rem;
+            color: var(--shopee-muted);
+            margin-bottom: 8px;
+        }
+        .shop-btn-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-chat-shop {
+            background: var(--shopee-light-orange);
+            color: var(--shopee-orange);
+            border: 1px solid var(--shopee-orange);
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-view-shop {
+            background: #fff;
+            border: 1px solid var(--shopee-border);
+            color: var(--shopee-text);
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .shop-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            font-size: 0.85rem;
+            border-left: 1px solid var(--shopee-border);
+            padding-left: 24px;
+        }
+        .metric-col span.metric-label {
+            color: var(--shopee-muted);
+            display: block;
+        }
+        .metric-col span.metric-value {
+            color: var(--shopee-orange);
+            font-weight: 700;
+        }
+
+        /* Product Article & Specifications Section */
+        .product-article-container {
+            background: var(--shopee-card);
+            border-radius: var(--radius-md);
+            padding: 26px 30px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+        }
+        .section-header-title {
+            background: rgba(0, 0, 0, 0.02);
+            padding: 12px 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--shopee-text);
+            text-transform: uppercase;
+            border-left: 4px solid var(--shopee-orange);
+            margin-bottom: 20px;
+        }
+
+        /* Specifications Table */
+        .spec-table {
+            width: 100%;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+        .spec-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--shopee-border);
+        }
+        .spec-label {
+            color: var(--shopee-muted);
+        }
+        .spec-val {
+            color: var(--shopee-text);
+            font-weight: 500;
+        }
+
+        /* Article Description Body */
+        .article-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        .article-content h2, .article-content h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 20px 0 10px 0;
+            color: var(--shopee-text);
+        }
+        .article-content p {
+            margin-bottom: 14px;
+        }
+        .article-content ul {
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+        .article-content li {
+            margin-bottom: 6px;
+        }
+        .article-highlight-box {
+            background: #fff8f5;
+            border: 1px solid #ffdcd1;
+            padding: 18px;
+            border-radius: var(--radius-md);
+            margin: 20px 0;
+        }
+        .article-highlight-box h4 {
+            color: var(--shopee-orange);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            background: var(--shopee-card);
+            border-radius: var(--radius-md);
+            padding: 26px 30px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+        }
+        .review-rating-summary {
+            background: #fffbf8;
+            border: 1px solid #f9ede5;
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 24px;
+        }
+        .overall-score {
+            text-align: center;
+        }
+        .score-big {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--shopee-orange);
+            line-height: 1;
+        }
+        .score-stars {
+            color: var(--shopee-orange);
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        .review-item {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--shopee-border);
+        }
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .reviewer-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #eee;
+        }
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--shopee-muted);
+            margin-bottom: 8px;
+        }
+        .review-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        /* Mobile Sticky Buy Bar */
+        .mobile-sticky-buy-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            padding: 8px 12px;
+            z-index: 1000;
+            align-items: center;
+            gap: 10px;
+        }
+        .mobile-bar-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.7rem;
+            color: var(--shopee-text);
+            text-decoration: none;
+            padding: 0 6px;
+        }
+        .mobile-btn-buy {
+            flex: 1;
+            background: var(--shopee-orange);
+            color: #fff !important;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 992px) {
+            .product-overview {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .shop-metrics {
+                border-left: none;
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .shopee-top-bar {
+                display: none;
+            }
+            .product-overview, .product-article-container, .reviews-container, .shop-info-card {
+                padding: 16px;
+                border-radius: 0;
+                margin-bottom: 12px;
+            }
+            .current-price {
+                font-size: 1.6rem;
+            }
+            .cta-action-row {
+                display: none;
+            }
+            .mobile-sticky-buy-bar {
+                display: flex;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Scripts for Instant Offline & Online Product Loading -->
+    <script src="products_data.js"></script>
+    <script src="api/products_data.js"></script>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="shopee-top-bar">
+        <div class="container top-bar-content">
+            <div>🔥 Kênh Săn Deal Flash Sale Shopee 1K, 9K, 29K Hàng Giờ</div>
+            <div class="top-bar-links">
+                <a href="deal1k.html">◀ Quay lại danh sách Deal</a>
+                <a href="#">Trợ giúp</a>
+                <a href="#">Tải ứng dụng</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header Shopee Style -->
+    <header class="shopee-main-header">
+        <div class="container header-content">
+            <a href="deal1k.html" class="shopee-logo">
+                <span>🛍️ Shopee</span>
+                <span class="badge-deal">FLASH SALE</span>
+            </a>
+
+            <div class="shopee-search-bar">
+                <input type="text" id="shopeeSearchInput" placeholder="Săn Deal 1K, 9K, Flash Sale..." />
+                <button type="button" id="btnSearchShopee">Tìm kiếm</button>
+            </div>
+
+            <a href="deal1k.html" class="header-cart-icon" title="Giỏ hàng Deal">
+                🛒
+                <span class="cart-badge" id="favCountBadge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs">
+            <a href="deal1k.html">Trang chủ</a>
+            <span>&gt;</span>
+            <a href="deal1k.html" id="breadcrumbCategory">Flash Sale Shopee</a>
+            <span>&gt;</span>
+            <span class="current" id="breadcrumbTitle">Chi tiết sản phẩm</span>
+        </nav>
+
+        <!-- Product Overview Block -->
+        <section class="product-overview">
+            <!-- Left: Gallery -->
+            <div class="gallery-container">
+                <div class="main-image-wrapper">
+                    <span class="mall-tag-floating">Mall</span>
+                    <span class="discount-tag-floating" id="discountFloating">-50%<br/><small>GIẢM</small></span>
+                    <img id="mainProductImg" class="main-image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Ảnh sản phẩm" />
+                </div>
+                <div class="thumbnails-row" id="thumbnailsRow">
+                    <!-- Thumbnails populated by JS -->
+                </div>
+                <div class="social-share-row">
+                    <div>
+                        Chia sẻ:
+                        <a href="#" id="shareFb">🔵 Facebook</a> |
+                        <a href="#" id="shareZalo">🟢 Zalo</a> |
+                        <a href="#" id="copyLinkBtn">🔗 Sao chép link</a>
+                    </div>
+                    <div>
+                        <a href="#" id="btnFavProduct">❤️ Đã thích (<span id="likeCount">1.4k</span>)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Product Details Info -->
+            <div class="product-info-col">
+                <div class="product-title-row">
+                    <h1 id="productTitle">
+                        <span class="badge-mall-inline">Mall</span>
+                        Đang tải thông tin sản phẩm...
+                    </h1>
+                </div>
+
+                <div class="rating-sold-row">
+                    <div class="rating-stars">
+                        <span>4.9</span>
+                        <span>★★★★★</span>
+                    </div>
+                    <div class="rating-count">
+                        <b id="ratingCountText">1.2k</b> Đánh Giá
+                    </div>
+                    <div class="sold-count">
+                        <b id="soldCountText">3.5k</b> Đã Bán
+                    </div>
+                </div>
+
+                <!-- Flash Sale Countdown Bar -->
+                <div class="flash-sale-timer-bar">
+                    <div class="fs-title">
+                        <span>⚡ FLASH SALE</span>
+                    </div>
+                    <div class="countdown-boxes">
+                        <span>KẾT THÚC TRONG</span>
+                        <span class="time-box" id="fsHour">02</span> :
+                        <span class="time-box" id="fsMin">45</span> :
+                        <span class="time-box" id="fsSec">18</span>
+                    </div>
+                </div>
+
+                <!-- Price Box -->
+                <div class="price-box">
+                    <span class="original-price" id="originalPriceText">450.000₫</span>
+                    <span class="current-price" id="currentPriceText">1.000₫</span>
+                    <span class="discount-badge" id="discountBadge">-99%</span>
+                </div>
+
+                <!-- Shop Voucher -->
+                <div class="info-item-row">
+                    <div class="info-label">Mã Giảm Giá</div>
+                    <div class="voucher-tags-group">
+                        <span class="voucher-pill">Giảm 10k đơn từ 99k</span>
+                        <span class="voucher-pill">Giảm 25k đơn từ 200k</span>
+                        <span class="voucher-pill">Hoàn 15% Xu</span>
+                    </div>
+                </div>
+
+                <!-- Shipping -->
+                <div class="info-item-row">
+                    <div class="info-label">Vận Chuyển</div>
+                    <div class="shipping-info">
+                        <span>🚚 Miễn phí vận chuyển</span>
+                        <span class="shipping-badge">Freeship Xtra</span>
+                    </div>
+                </div>
+
+                <!-- Variations / Options -->
+                <div class="info-item-row">
+                    <div class="info-label">Phân Loại</div>
+                    <div class="variation-list" id="variationList">
+                        <button type="button" class="variation-btn active">Màu Tiêu Chuẩn</button>
+                        <button type="button" class="variation-btn">Màu Đặc Biệt</button>
+                        <button type="button" class="variation-btn">Combo Tiết Kiệm</button>
+                    </div>
+                </div>
+
+                <!-- Quantity -->
+                <div class="info-item-row">
+                    <div class="info-label">Số Lượng</div>
+                    <div class="quantity-box">
+                        <div class="qty-controls">
+                            <button type="button" class="qty-btn" id="btnQtyMinus">-</button>
+                            <input type="text" class="qty-input" id="qtyInput" value="1" readonly />
+                            <button type="button" class="qty-btn" id="btnQtyPlus">+</button>
+                        </div>
+                        <span class="stock-available" id="stockAvailableText">Còn 50 sản phẩm</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons: Buy Now Leads to Affiliate Link -->
+                <div class="cta-action-row">
+                    <a href="#" id="btnAddCart" class="btn-add-cart">
+                        🛒 Thêm Vào Giỏ Hàng
+                    </a>
+                    <a href="#" id="btnBuyNowShopee" target="_blank" rel="noopener noreferrer" class="btn-buy-now-shopee">
+                        ⚡ MUA NGAY TRÊN SHOPEE
+                    </a>
+                </div>
+
+                <!-- Shopee Guarantee -->
+                <div class="shopee-guarantee-box">
+                    <span>🛡️ Shopee Đảm Bảo</span>
+                    <p>3 Ngày Trả Hàng / Hoàn Tiền Miễn Phí • 100% Hàng Chính Hãng</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop Info Section -->
+        <section class="shop-info-card">
+            <div class="shop-profile">
+                <img id="shopAvatar" class="shop-avatar" src="https://down-vn.img.susercontent.com/file/sg-11134201-8259d-mv17kvfe6kna6d" alt="Shop Avatar" />
+                <div class="shop-details">
+                    <h3 id="shopName">Shop Chính Hãng Official</h3>
+                    <div class="shop-status-text">Online 5 phút trước • Hà Nội</div>
+                    <div class="shop-btn-actions">
+                        <a href="#" id="btnChatShop" class="btn-chat-shop">💬 Chat Ngay</a>
+                        <a href="#" id="btnViewShop" class="btn-view-shop">🏪 Xem Shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="shop-metrics">
+                <div class="metric-col">
+                    <span class="metric-label">Đánh Giá:</span>
+                    <span class="metric-value">4.9 ⭐ (85.2k)</span>
+                </div>
+                <div class="metric-col">
+                    <span class="metric-label">Tỉ Lệ Phản Hồi:</span>
+                    <span class="metric-value">99% (Trong vài phút)</span>
+                </div>
+                <div class="metric-col">
+                    <span class="metric-label">Sản Phẩm:</span>
+                    <span class="metric-value">420</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Article / Specifications Section -->
+        <article class="product-article-container">
+            <h2 class="section-header-title">CHI TIẾT SẢN PHẨM</h2>
+            <div class="spec-table">
+                <div class="spec-row">
+                    <div class="spec-label">Danh Mục</div>
+                    <div class="spec-val" id="specCategory">Shopee &gt; Flash Sale &gt; Đời sống &amp; Tiêu dùng</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-label">Thương Hiệu</div>
+                    <div class="spec-val" id="specBrand">Chính Hãng</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-label">Mã Sản Phẩm (Item ID)</div>
+                    <div class="spec-val" id="specItemId">52016631005</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-label">Cửa Hàng (Shop ID)</div>
+                    <div class="spec-val" id="specShopId">446089250</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-label">Khung Giờ Flash Sale</div>
+                    <div class="spec-val" id="specTimeSlot">Đang diễn ra</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-label">Tình Trạng Kho</div>
+                    <div class="spec-val" id="specStockStatus">Sẵn hàng - Giao ngay</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-label">Gửi Từ</div>
+                    <div class="spec-val">Hà Nội / TP. Hồ Chí Minh</div>
+                </div>
+            </div>
+
+            <h2 class="section-header-title">BÀI VIẾT MÔ TẢ SẢN PHẨM</h2>
+            <div class="article-content" id="articleContent">
+                <p id="articleLead">
+                    Sản phẩm chất lượng cao đang được mở bán với mức giá cực kỳ ưu đãi trong chương trình Flash Sale độc quyền trên Shopee. Được hàng nghìn khách hàng tin dùng và đánh giá tích cực.
+                </p>
+
+                <div class="article-highlight-box">
+                    <h4>🔥 ĐIỂM NỔI BẬT KHÔNG THỂ BỎ QUA</h4>
+                    <ul>
+                        <li><b>Mức giá sốc độc quyền:</b> Giảm sâu tới 90% chỉ có trong khung giờ Flash Sale này.</li>
+                        <li><b>Cam kết chất lượng:</b> 100% hàng chuẩn, nguyên tem mác, hoàn tiền 200% nếu phát hiện hàng giả.</li>
+                        <li><b>Giao hàng siêu tốc:</b> Đóng gói cẩn thận, hỗ trợ Freeship Xtra giao tận tay toàn quốc.</li>
+                        <li><b>Chính sách đổi trả:</b> Hỗ trợ đổi trả miễn phí trong vòng 15 ngày nếu có lỗi từ nhà sản xuất.</li>
+                    </ul>
+                </div>
+
+                <h3>1. Thiết kế và công năng sử dụng</h3>
+                <p id="articleDetailP1">
+                    Sản phẩm được thiết kế tỉ mỉ, tối ưu trải nghiệm người dùng với chất liệu cao cấp, độ bền vượt trội theo thời gian. Mẫu mã hợp xu hướng, tinh tế và sang trọng, thích hợp cho nhu cầu sử dụng hàng ngày hoặc làm quà tặng ý nghĩa.
+                </p>
+
+                <h3>2. Hướng dẫn sử dụng và bảo quản</h3>
+                <ul>
+                    <li>Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp hoặc nhiệt độ quá cao.</li>
+                    <li>Sử dụng đúng theo hướng dẫn kèm theo sản phẩm để đạt hiệu quả tối ưu và độ bền cao nhất.</li>
+                    <li>Kiểm tra bao bì và tem niêm phong khi nhận hàng từ đơn vị vận chuyển.</li>
+                </ul>
+
+                <h3>3. Cam kết từ Shop và Shopee</h3>
+                <p>
+                    Tất cả đơn hàng đặt qua link Flash Sale đều được bảo hộ bởi chương trình <b>Shopee Đảm Bảo</b>. Khách hàng hoàn toàn yên tâm nhận hàng, kiểm tra trước khi xác nhận. Hãy nhanh tay bấm nút <b>"MUA NGAY"</b> để không bỏ lỡ mức giá ưu đãi có một không hai!
+                </p>
+            </div>
+        </article>
+
+        <!-- Customer Reviews Section -->
+        <section class="reviews-container">
+            <h2 class="section-header-title">ĐÁNH GIÁ SẢN PHẨM</h2>
+            <div class="review-rating-summary">
+                <div class="overall-score">
+                    <div class="score-big">4.9</div>
+                    <div class="score-stars">★★★★★</div>
+                    <small>trên 5 sao</small>
+                </div>
+                <div class="voucher-tags-group">
+                    <span class="voucher-pill active">Tất Cả (1.2k)</span>
+                    <span class="voucher-pill">5 Sao (1.1k)</span>
+                    <span class="voucher-pill">4 Sao (82)</span>
+                    <span class="voucher-pill">Có Hình Ảnh / Video (650)</span>
+                </div>
+            </div>
+
+            <div class="reviews-list">
+                <div class="review-item">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar"></div>
+                        <div class="reviewer-name">nguyenvana_***</div>
+                    </div>
+                    <div class="review-date">2026-11-20 14:22 | Phân loại: Màu Tiêu Chuẩn</div>
+                    <p class="review-text">Sản phẩm tuyệt vời, đóng gói rất cẩn thận và chắc chắn. Giao hàng nhanh hơn dự kiến. Săn được giá 1K quá hời luôn mọi người ơi! Sẽ tiếp tục ủng hộ shop lâu dài ạ. ⭐⭐⭐⭐⭐</p>
+                </div>
+                <div class="review-item">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar"></div>
+                        <div class="reviewer-name">tran_thuy_***</div>
+                    </div>
+                    <div class="review-date">2026-11-19 09:15 | Phân loại: Màu Đặc Biệt</div>
+                    <p class="review-text">Hàng chính hãng chuẩn 100%, dùng cực kỳ ưng ý. Canh đúng khung giờ Flash Sale bấm mua ngay là chốt được liền. Đánh giá 5 sao cho shop và Shopee!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Sticky Buy Bar -->
+    <div class="mobile-sticky-buy-bar">
+        <a href="#" id="mChatBtn" class="mobile-bar-btn">
+            <span>💬</span>
+            <span>Chat</span>
+        </a>
+        <a href="deal1k.html" class="mobile-bar-btn">
+            <span>🏠</span>
+            <span>Trang chủ</span>
+        </a>
+        <a href="#" id="mBuyNowBtn" target="_blank" rel="noopener noreferrer" class="mobile-btn-buy">
+            MUA NGAY (1K DEAL)
+        </a>
+    </div>
+
+    <!-- Logic Script: Load Product & Generate Affiliate Buy Link -->
+    <script>
+        // Default Affiliate ID
+        const AFFILIATE_ID = '17310500322';
+        const SUB_ID = '-addlivetag-dealxk';
+
+        // Function to build Shopee redirect link
+        function buildShopeeAffiliateLink(rawShopeeLink, affId = AFFILIATE_ID) {
+            if (!rawShopeeLink) return '#';
+            return 'https://shope.ee/an_redir?origin_link=' + encodeURIComponent(rawShopeeLink) + 
+                   '&affiliate_id=' + encodeURIComponent(affId) + 
+                   '&sub_id=' + SUB_ID;
+        }
+
+        // Get query parameter
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Format currency VND
+        function formatVND(number) {
+            if (!number) return '0₫';
+            return Number(number).toLocaleString('vi-VN') + '₫';
+        }
+
+        // Load Product Details
+        async function loadProduct() {
+            let productId = getQueryParam('id');
+            let itemId = getQueryParam('itemid');
+            let shopId = getQueryParam('shopid');
+            const paramLink = getQueryParam('link') || getQueryParam('url');
+
+            // Parse link if provided
+            if (paramLink) {
+                const matchLink = paramLink.match(/product\/(\d+)\/(\d+)/) || paramLink.match(/i\.(\d+)\.(\d+)/);
+                if (matchLink) {
+                    if (!shopId) shopId = matchLink[1];
+                    if (!itemId) itemId = matchLink[2];
+                }
+            }
+
+            let product = null;
+
+            // 1. Try global preloaded dataset
+            if (window.SHOOPEE_PRODUCTS_DATA && Array.isArray(window.SHOOPEE_PRODUCTS_DATA)) {
+                if (productId) {
+                    product = window.SHOOPEE_PRODUCTS_DATA.find(i => String(i.id) === String(productId) || String(i.src_id) === String(productId));
+                }
+                if (!product && itemId) {
+                    product = window.SHOOPEE_PRODUCTS_DATA.find(i => String(i.itemid) === String(itemId) || String(i.src_id) === String(itemId));
+                }
+            }
+
+            // 2. Try fetching from local API or data files if not yet found
+            if (!product) {
+                const dataSources = [
+                    'products_data.json',
+                    'data_dealxk.php',
+                    'api/data_dealxk.php',
+                    '/api/data_dealxk.php',
+                    'https://addlivetag.com/api/data_dealxk.php'
+                ];
+
+                for (const src of dataSources) {
+                    try {
+                        const res = await fetch(src, { cache: 'no-store' });
+                        if (res.ok) {
+                            const items = await res.json();
+                            if (Array.isArray(items)) {
+                                if (productId) {
+                                    product = items.find(i => String(i.id) === String(productId) || String(i.src_id) === String(productId));
+                                } else if (itemId) {
+                                    product = items.find(i => String(i.itemid) === String(itemId) || String(i.src_id) === String(itemId));
+                                }
+                                if (product) break;
+                            }
+                        }
+                    } catch (e) {
+                        // Continue to next source
+                    }
+                }
+            }
+
+            // 3. Fallback or dynamic product synthesis
+            if (!product) {
+                if (paramLink || itemId) {
+                    const fallbackTitle = getQueryParam('title') || `Sản phẩm Shopee #${itemId || productId || 'Hot Deal'}`;
+                    product = {
+                        id: productId || (itemId ? Number(itemId) : 128292147),
+                        title: fallbackTitle,
+                        img: getQueryParam('img') || 'https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mvd29d94j6kn47',
+                        price: Number(getQueryParam('price')) || 99000,
+                        original_price: Number(getQueryParam('original_price')) || 199000,
+                        percent: Number(getQueryParam('percent')) || 50,
+                        amount: 50,
+                        sold: 120,
+                        time_raw: "Flash Sale Hôm nay",
+                        shop_name: getQueryParam('shop_name') || "Shopee Official Mall",
+                        shopid: shopId || 221366989,
+                        itemid: itemId || 57171428770,
+                        link: paramLink || `https://shopee.vn/product/${shopId || '221366989'}/${itemId || '57171428770'}`
+                    };
+                } else {
+                    product = {
+                        id: productId || 128286447,
+                        title: "Đầm Lovito thanh lịch có nút trước lai bèo dáng xòe ngang gối mùa xuân/hè màu đỏ rượu vang Giáng sinh Màu đỏ cho nữ DRB205P2D365",
+                        img: "https://down-vn.img.susercontent.com/file/sg-11134201-8259d-mv17kvfe6kna6d",
+                        price: 268012,
+                        original_price: 406080,
+                        percent: 34,
+                        amount: 50,
+                        sold: 120,
+                        time_raw: "Hôm nay Khung: 00:00",
+                        shop_name: "Lovito Official Store",
+                        shopid: 446089250,
+                        itemid: 52016631005,
+                        link: "https://shopee.vn/product/446089250/52016631005"
+                    };
+                }
+            }
+
+            renderProduct(product);
+        }
+
+        function renderProduct(p) {
+            const title = p.title || 'Sản phẩm Flash Sale Shopee';
+            const price = p.price || 1000;
+            const originalPrice = p.original_price || (price * 2);
+            const discountPercent = p.percent || Math.round((1 - price / originalPrice) * 100);
+            const img = p.img || '';
+            const rawLink = p.link || `https://shopee.vn/product/${p.shopid || '446089250'}/${p.itemid || p.src_id || '52016631005'}`;
+            const affiliateBuyUrl = buildShopeeAffiliateLink(rawLink);
+
+            // Document titles
+            document.title = `${title} | Shopee Flash Sale`;
+            document.getElementById('breadcrumbTitle').textContent = title;
+            document.getElementById('productTitle').innerHTML = `<span class="badge-mall-inline">Mall</span>${title}`;
+
+            // Image Gallery
+            const mainImg = document.getElementById('mainProductImg');
+            mainImg.src = img;
+            mainImg.alt = title;
+
+            // Generate thumbnails (main + angle views)
+            const thumbsRow = document.getElementById('thumbnailsRow');
+            thumbsRow.innerHTML = '';
+            const sampleThumbnails = [img, img, img, img];
+            sampleThumbnails.forEach((src, idx) => {
+                const thumb = document.createElement('div');
+                thumb.className = `thumb-item ${idx === 0 ? 'active' : ''}`;
+                thumb.innerHTML = `<img src="${src}" alt="Thumb ${idx + 1}" />`;
+                thumb.onclick = () => {
+                    document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                    mainImg.src = src;
+                };
+                thumbsRow.appendChild(thumb);
+            });
+
+            // Prices
+            document.getElementById('currentPriceText').textContent = formatVND(price);
+            document.getElementById('originalPriceText').textContent = formatVND(originalPrice);
+            document.getElementById('discountBadge').textContent = `-${discountPercent}%`;
+            document.getElementById('discountFloating').innerHTML = `-${discountPercent}%<br/><small>GIẢM</small>`;
+
+            // Stock & Sold
+            document.getElementById('stockAvailableText').textContent = `Còn ${p.amount || 25} sản phẩm trong kho`;
+            document.getElementById('soldCountText').textContent = p.sold ? `${p.sold}` : '1.4k';
+
+            // Shop Details
+            if (p.shop_name) {
+                document.getElementById('shopName').textContent = p.shop_name;
+            }
+            if (img) {
+                document.getElementById('shopAvatar').src = img;
+            }
+
+            // Specs
+            document.getElementById('specItemId').textContent = p.itemid || p.src_id || '52016631005';
+            document.getElementById('specShopId').textContent = p.shopid || '446089250';
+            if (p.time_raw) {
+                document.getElementById('specTimeSlot').textContent = p.time_raw;
+            }
+
+            // Article lead text
+            document.getElementById('articleLead').textContent = 
+                `Bài viết đánh giá chi tiết: ${title}. Sản phẩm đang áp dụng chương trình Flash Sale độc quyền trên sàn Shopee với mức giá chỉ ${formatVND(price)} (tiết kiệm ${discountPercent}% so với giá gốc ${formatVND(originalPrice)}).`;
+
+            document.getElementById('articleDetailP1').textContent = 
+                `Mẫu sản phẩm ${title} sở hữu độ hoàn thiện cao từ nhà sản xuất uy tín. Được phân phối chính hãng qua shop ${p.shop_name || 'Shopee Mall'}, cam kết chuẩn chất lượng, đầy đủ bảo hành và hỗ trợ người dùng chu đáo.`;
+
+            // BUY BUTTONS WITH AFFILIATE LINK
+            const btnBuyNow = document.getElementById('btnBuyNowShopee');
+            btnBuyNow.href = affiliateBuyUrl;
+
+            const mBuyNowBtn = document.getElementById('mBuyNowBtn');
+            mBuyNowBtn.href = affiliateBuyUrl;
+            mBuyNowBtn.textContent = `MUA NGAY (${formatVND(price)})`;
+
+            const btnAddCart = document.getElementById('btnAddCart');
+            btnAddCart.href = affiliateBuyUrl;
+
+            const btnChatShop = document.getElementById('btnChatShop');
+            btnChatShop.href = affiliateBuyUrl;
+            const btnViewShop = document.getElementById('btnViewShop');
+            btnViewShop.href = affiliateBuyUrl;
+
+            // Copy Link
+            document.getElementById('copyLinkBtn').onclick = (e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText(window.location.href);
+                alert('Đã sao chép link bài viết sản phẩm!');
+            };
+        }
+
+        // Quantity controls
+        document.getElementById('btnQtyPlus').onclick = () => {
+            const input = document.getElementById('qtyInput');
+            input.value = parseInt(input.value || 1) + 1;
+        };
+        document.getElementById('btnQtyMinus').onclick = () => {
+            const input = document.getElementById('qtyInput');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        };
+
+        // Variations
+        document.querySelectorAll('.variation-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.variation-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            };
+        });
+
+        // Flash Sale countdown timer
+        function runTimer() {
+            let totalSeconds = 2 * 3600 + 45 * 60 + 18;
+            setInterval(() => {
+                if (totalSeconds > 0) totalSeconds--;
+                const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+                const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+                const s = String(totalSeconds % 60).padStart(2, '0');
+                document.getElementById('fsHour').textContent = h;
+                document.getElementById('fsMin').textContent = m;
+                document.getElementById('fsSec').textContent = s;
+            }, 1000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProduct();
+            runTimer();
+        });
+    </script>
+</body>
+</html>

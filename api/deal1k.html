@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
     <head>
         <meta charset="utf-8" />
@@ -24,180 +24,200 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async=""></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+
         <!-- Shopee Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet" />
 
         <style>
-            /* ===== CSS VARIABLES — Softer Shopee palette ===== */
+            /* ===== SHOPEE DESIGN SYSTEM ===== */
             :root {
-                --primary: #f05c3a;          /* cam nhạt hơn, bớt chói */
-                --primary-hover: #d94a2a;
-                --primary-soft: #fff3ef;     /* nền cam cực nhạt */
-                --primary-glow: rgba(240,92,58,0.10);
-                --bg: #f7f4f2;               /* nền ấm ivory thay vì xám lạnh */
-                --surface: #ffffff;
-                --surface2: #faf9f8;
-                --text: #2d2926;             /* nâu ấm thay vì đen lạnh */
-                --text-muted: #8a8078;
-                --border: #ede9e4;           /* viền ấm */
-                --radius-xs: 6px;
-                --radius-sm: 10px;
-                --radius-md: 14px;
-                --radius-lg: 18px;
-                --shadow-xs: 0 1px 3px rgba(0,0,0,0.04);
-                --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-                --shadow-md: 0 6px 24px rgba(0,0,0,0.08);
-                --transition: 0.22s ease;
-                /* Compat aliases */
-                --shopee-orange: var(--primary);
-                --shopee-orange-hover: var(--primary-hover);
-                --shopee-light-orange: var(--primary-soft);
-                --shopee-bg: var(--bg);
-                --shopee-text: var(--text);
-                --shopee-muted: var(--text-muted);
-                --shopee-border: var(--border);
-                --shopee-card: var(--surface);
-                --shopee-mall: #c0392b;
+                --shopee-orange: #ee4d2d;
+                --shopee-orange-hover: #d73211;
+                --shopee-light-orange: #ffeee8;
+                --shopee-bg: #f5f5f5;
+                --shopee-text: #222222;
+                --shopee-muted: #757575;
+                --shopee-border: #e8e8e8;
+                --shopee-card: #ffffff;
+                --shopee-mall: #d0011b;
+                --shopee-yellow: #ffb800;
+                --radius-xs: 4px;
+                --radius-sm: 6px;
+                --radius-md: 10px;
+                --radius-lg: 14px;
+                --shadow-xs: 0 1px 3px rgba(0,0,0,0.05);
+                --shadow-sm: 0 1px 4px rgba(0,0,0,0.08);
+                --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+                --transition: 0.2s ease;
             }
 
-            .container-shopee {
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+                background-color: var(--shopee-bg) !important;
+                color: var(--shopee-text) !important;
+                line-height: 1.5;
+                padding-bottom: 70px;
+            }
+
+            .container {
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 0 16px;
             }
+
+            /* ===== SHOPEE TOP BAR ===== */
+            .shopee-top-bar {
+                background: var(--shopee-orange) !important;
+                color: #fff !important;
+                font-size: 0.8rem !important;
+                padding: 5px 0 !important;
+            }
+            .top-bar-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .top-bar-left {
+                font-weight: 500;
+                opacity: 0.95;
+            }
+            .top-bar-links {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+            .top-bar-links a {
+                color: #fff !important;
+                text-decoration: none !important;
+                opacity: 0.9;
+                transition: opacity 0.2s;
+                font-size: 0.8rem;
+                cursor: pointer;
+            }
+            .top-bar-links a:hover {
+                opacity: 1;
+            }
+
+            /* ===== SHOPEE MAIN HEADER ===== */
+            .shopee-main-header {
+                background: var(--shopee-orange) !important;
+                color: #fff !important;
+                padding: 14px 0 16px 0 !important;
+                box-shadow: 0 2px 10px rgba(238, 77, 45, 0.3) !important;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
             .header-content {
                 display: flex;
                 align-items: center;
-                gap: 20px;
+                gap: 24px;
             }
             .shopee-logo {
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                text-decoration: none;
-                color: #fff;
-                font-size: 1.5rem;
+                text-decoration: none !important;
+                color: #fff !important;
+                font-size: 1.6rem;
                 font-weight: 800;
                 letter-spacing: -0.5px;
                 white-space: nowrap;
-                flex-shrink: 0;
-                text-shadow: 0 1px 4px rgba(0,0,0,0.12);
             }
-            .shopee-logo .badge-deal {
-                font-size: 0.65rem;
-                background: rgba(255,255,255,0.95);
-                color: var(--primary);
+            .shopee-logo span.badge-deal {
+                font-size: 0.7rem;
+                background: #fff;
+                color: var(--shopee-orange);
                 padding: 2px 8px;
                 border-radius: 99px;
                 font-weight: 800;
-                vertical-align: middle;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.1);
             }
 
-            /* Search bar */
             .shopee-search-bar {
                 flex: 1;
                 display: flex;
                 background: #fff;
-                border-radius: var(--radius-sm);
+                border-radius: var(--radius-xs);
                 padding: 3px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-                min-width: 0;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
             .shopee-search-bar input {
                 flex: 1;
                 border: none;
                 outline: none;
-                padding: 7px 14px;
-                font-size: 0.88rem;
+                padding: 8px 14px;
+                font-size: 0.9rem;
                 font-family: inherit;
-                min-width: 0;
-                border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-                color: var(--text);
+                color: var(--shopee-text);
+                background: transparent;
             }
             .shopee-search-bar button {
-                background: var(--primary);
+                background: var(--shopee-orange);
                 border: none;
                 color: #fff;
-                padding: 0 18px;
+                padding: 0 22px;
                 border-radius: var(--radius-xs);
                 cursor: pointer;
                 font-weight: 600;
-                font-size: 0.88rem;
-                transition: background var(--transition);
+                font-size: 0.9rem;
+                transition: background 0.2s;
                 white-space: nowrap;
             }
-            .shopee-search-bar button:hover { background: var(--primary-hover); }
+            .shopee-search-bar button:hover {
+                background: var(--shopee-orange-hover);
+            }
 
-            /* Header right buttons */
-            .header-actions {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                flex-shrink: 0;
-            }
-            .header-btn {
-                background: rgba(255,255,255,0.95);
-                border: none;
-                color: var(--primary);
-                padding: 6px 14px;
-                border-radius: var(--radius-sm);
+            .header-cart-icon {
+                font-size: 1.5rem;
+                color: #fff !important;
+                text-decoration: none !important;
+                position: relative;
+                padding: 0 10px;
                 cursor: pointer;
-                font-size: 0.82rem;
-                font-weight: 700;
-                font-family: inherit;
-                transition: all var(--transition);
-                white-space: nowrap;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.12);
             }
-            .header-btn:hover {
+            .cart-badge {
+                position: absolute;
+                top: -6px;
+                right: 0px;
                 background: #fff;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-                transform: translateY(-1px);
-            }
-            .header-btn.btn-reset {
-                background: rgba(255,255,255,0.22);
-                border: 1px solid rgba(255,255,255,0.5);
-                color: #fff;
-                box-shadow: none;
-            }
-            .header-btn.btn-reset:hover {
-                background: rgba(255,255,255,0.35);
-                transform: none;
-                box-shadow: none;
-            }
-            #currentMillisWithMillis {
-                color: rgba(255,255,255,0.82);
-                font-size: 0.79rem;
-                font-family: 'JetBrains Mono', monospace;
-                white-space: nowrap;
-                flex-shrink: 0;
+                color: var(--shopee-orange);
+                font-size: 0.7rem;
+                font-weight: 800;
+                padding: 1px 6px;
+                border-radius: 99px;
+                border: 2px solid var(--shopee-orange);
             }
 
             /* ===== FLASH SALE BANNER ===== */
             .flash-sale-banner {
-                background: linear-gradient(90deg, #f05432 0%, #ff7e4a 100%);
+                background: linear-gradient(90deg, #ee4d2d 0%, #ff7337 100%);
                 color: #fff;
-                border-radius: var(--radius-sm);
-                padding: 11px 18px;
+                border-radius: var(--radius-xs);
+                padding: 10px 16px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 12px;
                 font-weight: 700;
-                box-shadow: 0 4px 16px rgba(240,92,58,0.18);
+                box-shadow: 0 2px 8px rgba(238, 77, 45, 0.2);
             }
             .flash-banner-left {
                 display: flex;
                 align-items: center;
-                gap: 12px;
+                gap: 10px;
             }
             .flash-label {
-                font-size: 0.95rem;
+                font-size: 1rem;
                 font-weight: 800;
-                letter-spacing: 0.8px;
+                letter-spacing: 0.5px;
                 text-transform: uppercase;
                 display: flex;
                 align-items: center;
@@ -205,103 +225,118 @@
             }
             .flash-desc {
                 font-size: 0.82rem;
-                opacity: 0.88;
+                opacity: 0.9;
                 font-weight: 500;
             }
             .flash-banner-right {
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 8px;
                 font-size: 0.82rem;
             }
             .live-badge {
-                background: rgba(255,255,255,0.18);
-                border: 1px solid rgba(255,255,255,0.45);
+                background: rgba(255,255,255,0.2);
+                border: 1px solid rgba(255,255,255,0.5);
                 color: #fff;
-                font-size: 0.74rem;
+                font-size: 0.75rem;
                 font-weight: 700;
-                padding: 3px 10px;
+                padding: 2px 8px;
                 border-radius: 99px;
                 display: flex;
                 align-items: center;
-                gap: 5px;
+                gap: 4px;
             }
             .live-dot {
                 width: 6px; height: 6px;
-                background: #7fff7f;
+                background: #76ff76;
                 border-radius: 50%;
-                animation: pulse-green 1.4s infinite;
+                animation: pulse-green 1.2s infinite;
             }
             @keyframes pulse-green {
-                0%,100% { opacity: 1; transform: scale(1); }
-                50% { opacity: 0.4; transform: scale(0.8); }
+                0%,100% { opacity: 1; }
+                50% { opacity: 0.3; }
             }
 
             /* ===== FILTER SECTION ===== */
             .filter-section {
-                background: var(--surface) !important;
-                border: 1px solid var(--border) !important;
-                border-radius: var(--radius-sm) !important;
+                background: #fff !important;
+                border: 1px solid var(--shopee-border) !important;
+                border-radius: var(--radius-xs) !important;
                 padding: 14px 16px !important;
                 margin-bottom: 10px;
                 box-shadow: var(--shadow-xs);
             }
             .filter-title {
-                color: var(--text-muted) !important;
-                font-size: 0.78rem;
-                font-weight: 700;
+                color: var(--shopee-muted) !important;
+                font-size: 0.82rem;
+                font-weight: 600;
                 text-transform: uppercase;
-                letter-spacing: 0.5px;
-                margin-bottom: 8px;
+                letter-spacing: 0.3px;
+                margin-bottom: 6px;
             }
             .pill {
                 background: #fff !important;
-                border: 1px solid var(--border) !important;
-                color: #555 !important;
-                border-radius: var(--radius-xs) !important;
-                font-size: 0.8rem;
-                padding: 5px 11px;
+                border: 1px solid var(--shopee-border) !important;
+                color: var(--shopee-text) !important;
+                border-radius: 2px !important;
+                font-size: 0.82rem;
+                padding: 4px 10px;
                 cursor: pointer;
-                transition: all var(--transition);
+                transition: all 0.15s;
                 display: inline-block;
                 margin: 2px 3px 2px 0;
-                font-weight: 500;
             }
             .pill.active, .pill:hover {
-                background: var(--primary-soft) !important;
-                border-color: var(--primary) !important;
-                color: var(--primary) !important;
+                background: var(--shopee-light-orange) !important;
+                border-color: var(--shopee-orange) !important;
+                color: var(--shopee-orange) !important;
                 font-weight: 600;
+            }
+
+            /* Select2 Customization */
+            .select2-container--default .select2-selection--single {
+                background-color: #fff !important;
+                border: 1px solid var(--shopee-border) !important;
+                border-radius: var(--radius-xs) !important;
+                height: 36px !important;
+                display: flex !important;
+                align-items: center !important;
+            }
+            .select2-container--default .select2-selection--single .select2-selection__rendered {
+                color: var(--shopee-text) !important;
+                line-height: 34px !important;
+                font-size: 0.85rem !important;
+            }
+            .select2-container--default .select2-selection--single .select2-selection__arrow {
+                height: 34px !important;
             }
 
             /* ===== TOOLBAR ===== */
             .toolbar {
-                background: var(--surface) !important;
-                border: 1px solid var(--border) !important;
-                border-radius: var(--radius-sm) !important;
+                background: #fff !important;
+                border: 1px solid var(--shopee-border) !important;
+                border-radius: var(--radius-xs) !important;
                 padding: 12px 16px !important;
                 margin-bottom: 10px;
                 box-shadow: var(--shadow-xs);
             }
             .search-input {
-                border-radius: var(--radius-xs) !important;
-                border-color: var(--border) !important;
+                border-radius: 2px !important;
+                border-color: var(--shopee-border) !important;
                 font-size: 0.88rem;
-                background: var(--surface2) !important;
             }
             .search-input:focus {
-                border-color: var(--primary) !important;
-                box-shadow: 0 0 0 3px var(--primary-glow) !important;
-                background: #fff !important;
+                border-color: var(--shopee-orange) !important;
+                box-shadow: 0 0 0 2px rgba(238,77,45,0.12) !important;
             }
             .sort-select {
-                border-radius: var(--radius-xs) !important;
-                background: var(--surface2) !important;
-                border-color: var(--border) !important;
+                border-radius: 2px !important;
+                border-color: var(--shopee-border) !important;
+                font-size: 0.88rem;
             }
             .sort-select:focus {
-                border-color: var(--primary) !important;
-                box-shadow: 0 0 0 3px var(--primary-glow) !important;
+                border-color: var(--shopee-orange) !important;
+                box-shadow: 0 0 0 2px rgba(238,77,45,0.12) !important;
             }
             .search-container { position: relative; }
             .search-icon {
@@ -309,7 +344,7 @@
                 left: 10px;
                 top: 50%;
                 transform: translateY(-50%);
-                font-size: 0.88rem;
+                font-size: 0.9rem;
                 z-index: 1;
                 opacity: 0.5;
             }
@@ -317,9 +352,9 @@
 
             /* ===== TABS ===== */
             .tabs-container {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: var(--radius-sm);
+                background: #fff;
+                border: 1px solid var(--shopee-border);
+                border-radius: var(--radius-xs);
                 padding: 0 16px;
                 margin-bottom: 10px;
                 box-shadow: var(--shadow-xs);
@@ -330,114 +365,119 @@
             .nav-tabs .nav-link {
                 border: none !important;
                 border-bottom: 2px solid transparent !important;
-                color: var(--text-muted) !important;
-                font-size: 0.88rem;
+                color: var(--shopee-muted) !important;
+                font-size: 0.9rem;
                 font-weight: 500;
-                padding: 12px 18px;
-                transition: all var(--transition);
+                padding: 12px 16px;
+                transition: all 0.15s;
             }
             .nav-tabs .nav-link.active {
-                color: var(--primary) !important;
-                border-bottom-color: var(--primary) !important;
+                color: var(--shopee-orange) !important;
+                border-bottom-color: var(--shopee-orange) !important;
                 font-weight: 700 !important;
             }
-            .nav-tabs .nav-link:hover { color: var(--primary) !important; }
-            .nav-tabs .nav-link .badge { font-size: 0.7rem; }
-            .nav-tabs .nav-link.active .badge { background: var(--primary) !important; }
+            .nav-tabs .nav-link:hover {
+                color: var(--shopee-orange) !important;
+            }
+            .nav-tabs .nav-link .badge {
+                font-size: 0.72rem;
+            }
+            .nav-tabs .nav-link.active .badge {
+                background: var(--shopee-orange) !important;
+            }
 
             /* ===== DEAL CARD ===== */
             .deal-card {
-                background: var(--surface) !important;
-                border-radius: var(--radius-sm) !important;
+                background: #fff !important;
+                border-radius: var(--radius-xs) !important;
                 box-shadow: var(--shadow-sm) !important;
                 overflow: hidden;
-                transition: transform var(--transition), box-shadow var(--transition);
+                transition: transform 0.2s, box-shadow 0.2s;
                 position: relative;
-                border: 1px solid var(--border);
+                border: 1px solid var(--shopee-border);
             }
             .deal-card:hover {
-                transform: translateY(-4px) !important;
-                box-shadow: var(--shadow-md) !important;
-                border-color: rgba(240,92,58,0.15);
+                transform: translateY(-3px) !important;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+                border-color: rgba(238,77,45,0.25);
             }
-            .deal-card.sold-out { opacity: 0.6; }
+            .deal-card.sold-out { opacity: 0.65; }
 
             /* Card image */
             .deal-img-container {
                 position: relative;
                 overflow: hidden;
                 aspect-ratio: 1/1;
-                background: var(--surface2);
+                background: #f8f8f8;
                 cursor: pointer;
             }
             .deal-img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: transform 0.35s ease;
+                transition: transform 0.3s;
             }
-            .deal-card:hover .deal-img { transform: scale(1.06); }
+            .deal-card:hover .deal-img { transform: scale(1.05); }
 
             /* Card content */
             .deal-content {
-                padding: 10px 11px 4px 11px;
+                padding: 10px 10px 4px 10px;
             }
             .deal-title {
-                font-size: 0.84rem;
+                font-size: 0.85rem;
                 font-weight: 500;
                 margin-bottom: 6px;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                line-height: 1.45;
+                line-height: 1.4;
                 min-height: 2.4em;
-                color: var(--text);
             }
             .deal-title a, .link-out {
-                color: var(--text) !important;
+                color: var(--shopee-text) !important;
                 text-decoration: none;
             }
             .deal-title a:hover, .link-out:hover {
-                color: var(--primary) !important;
+                color: var(--shopee-orange) !important;
             }
 
             /* Price row */
             .deal-price {
                 display: flex;
                 align-items: baseline;
-                gap: 7px;
+                gap: 6px;
                 margin-bottom: 6px;
                 flex-wrap: wrap;
             }
             .current-price {
-                color: var(--primary) !important;
+                color: var(--shopee-orange) !important;
                 font-size: 1.05rem;
                 font-weight: 800 !important;
             }
             .original-price {
-                color: var(--text-muted) !important;
-                font-size: 0.78rem;
+                color: var(--shopee-muted) !important;
+                font-size: 0.8rem;
                 text-decoration: line-through;
             }
 
             /* Badges */
             .badge-soft {
-                font-size: 0.7rem;
-                padding: 2px 7px;
-                border-radius: var(--radius-xs);
+                font-size: 0.72rem;
+                padding: 2px 6px;
+                border-radius: 2px;
                 font-weight: 600;
                 display: inline-block;
             }
-            .badge-red { background: var(--primary); color: #fff; }
-            .badge-yellow { background: #f5a623; color: #fff; }
-            .badge-green { background: #2ecc9a !important; color: #fff !important; }
-            .badge-soft.badge-green { background: #e6f9f4 !important; color: #2ecc9a !important; }
+            .badge-red { background: var(--shopee-orange); color: #fff; }
+            .badge-yellow { background: var(--shopee-yellow); color: #fff; }
+            .badge-green { background: #26aa99 !important; color: #fff !important; }
+            .badge-soft.badge-green { background: #e8f8f7 !important; color: #26aa99 !important; }
 
-            /* Deal meta */
+            /* Deal meta row */
             .deal-meta {
-                font-size: 0.74rem;
-                color: var(--text-muted);
+                font-size: 0.75rem;
+                color: var(--shopee-muted);
                 margin-bottom: 4px;
                 display: flex;
                 align-items: center;
@@ -447,39 +487,39 @@
 
             /* Progress bar */
             .progress-bar-container {
-                background: #f0ece8;
+                background: #f0f0f0;
                 border-radius: 99px;
                 height: 5px;
-                margin: 5px 0;
+                margin: 4px 0;
                 overflow: hidden;
             }
             .progress-bar-fill {
-                background: linear-gradient(90deg, var(--primary), #ff8c5a);
+                background: linear-gradient(90deg, #ee4d2d, #ff7337);
                 height: 100%;
                 border-radius: 99px;
-                transition: width 0.4s ease;
+                transition: width 0.3s;
             }
             .progress-text {
-                font-size: 0.7rem;
-                color: var(--text-muted);
+                font-size: 0.72rem;
+                color: var(--shopee-muted);
                 margin-bottom: 4px;
             }
 
             /* Deal actions */
             .deal-actions {
-                padding: 8px 11px 11px 11px;
+                padding: 8px 10px 10px 10px;
                 display: flex;
                 align-items: center;
                 gap: 6px;
             }
             .btn-action {
                 border: none;
-                border-radius: var(--radius-xs);
+                border-radius: 2px;
                 cursor: pointer;
                 font-size: 0.8rem;
                 font-weight: 600;
                 padding: 7px 10px;
-                transition: all var(--transition);
+                transition: all 0.15s;
                 font-family: inherit;
                 display: inline-flex;
                 align-items: center;
@@ -488,64 +528,62 @@
             }
             .btn-buy {
                 flex: 1;
-                background: var(--primary) !important;
+                background: var(--shopee-orange) !important;
                 color: #fff !important;
                 font-weight: 700 !important;
-                font-size: 0.84rem;
+                font-size: 0.85rem;
                 text-decoration: none;
                 text-align: center;
-                border-radius: var(--radius-xs);
-                box-shadow: 0 2px 8px rgba(240,92,58,0.22);
+                box-shadow: 0 2px 6px rgba(238, 77, 45, 0.25);
             }
             .btn-buy:hover {
-                background: var(--primary-hover) !important;
+                background: var(--shopee-orange-hover) !important;
                 color: #fff !important;
-                box-shadow: 0 4px 12px rgba(240,92,58,0.3);
-                transform: translateY(-1px);
             }
             .btn-fav {
                 background: #f0ece8;
-                color: #999;
+                color: #888;
                 width: 34px;
                 height: 34px;
                 font-size: 1rem;
                 padding: 0;
-                border-radius: var(--radius-xs);
             }
             .btn-fav:hover, .btn-fav.active {
-                background: var(--primary-soft);
-                color: var(--primary);
+                background: var(--shopee-light-orange);
+                color: var(--shopee-orange);
             }
             .btn-hide {
                 background: #f0ece8;
-                color: #aaa;
+                color: #888;
                 width: 34px;
                 height: 34px;
                 font-size: 0.9rem;
                 padding: 0;
-                border-radius: var(--radius-xs);
             }
-            .btn-hide:hover { background: #fde8e8; color: #c0392b; }
+            .btn-hide:hover {
+                background: #ffe0e0;
+                color: #c00;
+            }
             .btn-unhide {
-                background: var(--primary-soft);
-                color: var(--primary);
+                background: var(--shopee-light-orange);
+                color: var(--shopee-orange);
                 font-size: 0.8rem;
                 padding: 6px 12px;
-                border-radius: var(--radius-xs);
+                border-radius: 2px;
             }
 
             /* ===== BOTTOM NAV ===== */
             .bottom-nav {
                 position: fixed;
                 bottom: 0; left: 0; right: 0;
-                background: var(--surface) !important;
-                border-top: 1px solid var(--border) !important;
+                background: #fff !important;
+                border-top: 1px solid var(--shopee-border) !important;
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
                 padding: 6px 0 8px 0;
                 z-index: 999;
-                box-shadow: 0 -2px 12px rgba(0,0,0,0.05);
+                box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
             }
             .bottom-nav-item {
                 display: flex;
@@ -553,13 +591,13 @@
                 align-items: center;
                 gap: 2px;
                 text-decoration: none;
-                color: var(--text-muted) !important;
+                color: var(--shopee-muted) !important;
                 font-size: 0.72rem;
                 font-weight: 500;
                 padding: 4px 12px;
-                transition: color var(--transition);
+                transition: color 0.15s;
             }
-            .bottom-nav-item.active { color: var(--primary) !important; }
+            .bottom-nav-item.active { color: var(--shopee-orange) !important; }
             .bottom-nav-icon { font-size: 1.3rem; line-height: 1; }
 
             /* ===== FAB ===== */
@@ -580,43 +618,38 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                box-shadow: var(--shadow-sm);
-                transition: all var(--transition);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                transition: all 0.2s;
                 font-family: inherit;
             }
             .fab-secondary {
-                background: var(--surface);
-                color: var(--primary);
-                border: 1px solid var(--border);
+                background: #fff;
+                color: var(--shopee-orange);
+                border: 1px solid var(--shopee-border);
             }
-            .fab-secondary:hover {
-                background: var(--primary-soft);
-                box-shadow: var(--shadow-md);
-                transform: translateY(-2px);
-            }
+            .fab-secondary:hover { background: var(--shopee-light-orange); }
 
             /* ===== MODALS ===== */
             .modal {
                 display: none;
                 position: fixed;
                 top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(45,41,38,0.45);
-                backdrop-filter: blur(2px);
+                background: rgba(0,0,0,0.5);
                 z-index: 2000;
                 align-items: center;
                 justify-content: center;
             }
             .modal.show { display: flex; }
             .modal-content {
-                background: var(--surface);
+                background: #fff;
                 border-radius: var(--radius-md);
                 width: 90%;
                 max-width: 480px;
                 overflow: hidden;
-                box-shadow: 0 16px 48px rgba(0,0,0,0.16);
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             }
             .modal-header {
-                background: linear-gradient(135deg, #e85530 0%, #f07040 100%) !important;
+                background: var(--shopee-orange) !important;
                 color: #fff !important;
                 padding: 14px 18px;
                 display: flex;
@@ -626,33 +659,31 @@
             .modal-title { color: #fff !important; font-size: 1rem; font-weight: 700; margin: 0; }
             .modal-close {
                 background: none; border: none;
-                color: rgba(255,255,255,0.85) !important;
+                color: #fff !important;
                 font-size: 1.5rem;
                 cursor: pointer;
                 line-height: 1;
                 padding: 0;
-                transition: color var(--transition);
             }
-            .modal-close:hover { color: #fff !important; }
-            .modal-body { padding: 20px 18px; }
+            .modal-body { padding: 18px; }
             .modal-footer {
                 padding: 12px 18px;
-                border-top: 1px solid var(--border);
+                border-top: 1px solid var(--shopee-border);
                 display: flex;
                 justify-content: flex-end;
                 gap: 8px;
             }
             .btn-primary {
-                background: var(--primary) !important;
-                border-color: var(--primary) !important;
+                background: var(--shopee-orange) !important;
+                border-color: var(--shopee-orange) !important;
                 color: #fff !important;
-                border-radius: var(--radius-xs) !important;
+                border-radius: 2px;
             }
             .btn-primary:hover {
-                background: var(--primary-hover) !important;
-                border-color: var(--primary-hover) !important;
+                background: var(--shopee-orange-hover) !important;
+                border-color: var(--shopee-orange-hover) !important;
             }
-            .btn-secondary { border-radius: var(--radius-xs) !important; }
+            .btn-secondary { border-radius: 2px; }
 
             /* ===== NOTIFICATION ===== */
             .notification {
@@ -660,127 +691,174 @@
                 bottom: 80px;
                 left: 50%;
                 transform: translateX(-50%);
-                background: var(--surface);
-                border-left: 4px solid var(--primary) !important;
-                border-radius: var(--radius-sm);
+                background: #fff;
+                border-left: 4px solid var(--shopee-orange) !important;
+                border-radius: var(--radius-xs);
                 padding: 12px 18px;
                 min-width: 240px;
                 max-width: 340px;
-                box-shadow: var(--shadow-md);
+                box-shadow: 0 4px 16px rgba(0,0,0,0.12);
                 z-index: 3000;
                 display: none;
             }
             .notification-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 2px; }
-            .notification-message { font-size: 0.82rem; color: var(--text-muted); }
+            .notification-message { font-size: 0.82rem; color: var(--shopee-muted); }
 
             /* ===== SKELETON / STATUS ===== */
             .status-message {
                 text-align: center;
-                color: var(--text-muted);
+                color: var(--shopee-muted);
                 padding: 32px 0;
                 font-size: 0.9rem;
             }
             .skeleton {
-                background: linear-gradient(90deg, #f0ece8 25%, #e8e4e0 50%, #f0ece8 75%);
+                background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
                 background-size: 200% 100%;
-                animation: shimmer 1.4s infinite;
-                border-radius: var(--radius-xs);
+                animation: shimmer 1.2s infinite;
+                border-radius: 4px;
             }
             @keyframes shimmer {
                 0% { background-position: 200% 0; }
                 100% { background-position: -200% 0; }
             }
             .skeleton-img { height: 180px; }
-            .skeleton-title { height: 13px; margin-bottom: 6px; }
-            .skeleton-text { height: 11px; margin-bottom: 5px; }
+            .skeleton-title { height: 14px; margin-bottom: 6px; }
+            .skeleton-text { height: 12px; margin-bottom: 5px; }
             .loading-spinner {
                 display: inline-block;
                 width: 14px; height: 14px;
-                border: 2px solid rgba(255,255,255,0.35);
+                border: 2px solid rgba(255,255,255,0.4);
                 border-top-color: #fff;
                 border-radius: 50%;
-                animation: spin 0.75s linear infinite;
+                animation: spin 0.7s linear infinite;
             }
             @keyframes spin { to { transform: rotate(360deg); } }
-            .millis { font-size: 0.75em; opacity: 0.65; }
 
             /* ===== RESPONSIVE ===== */
             @media (max-width: 768px) {
-                .shopee-logo { font-size: 1.1rem; }
-                .shopee-logo .badge-deal { display: none; }
+                .shopee-top-bar { display: none; }
+                .header-content { gap: 12px; }
+                .shopee-logo { font-size: 1.2rem; }
+                .shopee-logo span.badge-deal { display: none; }
+                .shopee-search-bar button { padding: 0 12px; font-size: 0.82rem; }
                 .flash-desc { display: none; }
-                #currentMillisWithMillis { display: none; }
-                .flash-sale-banner { padding: 9px 12px; }
+                .flash-sale-banner { padding: 8px 12px; }
                 .flash-label { font-size: 0.88rem; }
-                .deal-content { padding: 8px 9px 2px 9px; }
-                .deal-actions { padding: 6px 9px 9px 9px; }
-            }
-            @media (min-width: 769px) {
-                .shopee-logo { font-size: 1.5rem; }
+                .deal-content { padding: 8px 8px 2px 8px; }
+                .deal-actions { padding: 6px 8px 8px 8px; }
             }
         </style>
     </head>
 
     <body>
-        <!-- Shopee Top Bar -->
-        <div class="shopee-top-bar d-none d-md-block">
-            <div class="container-shopee">
-                <div class="top-bar-content">
-                    <div class="top-bar-left">🛍️ Flash Sale Deal — Săn deal giá sốc mỗi giờ!</div>
-                    <div class="top-bar-links">
-                        <a href="https://shopee.vn/seller" target="_blank">Kênh Người Bán</a>
-                        <a href="https://shopee.vn/web" target="_blank">Tải ứng dụng</a>
-                        <a href="#" id="btnUser">Hoàn tiền</a>
-                    </div>
+        <!-- Top Bar (Exact product.html style) -->
+        <div class="shopee-top-bar">
+            <div class="container top-bar-content">
+                <div class="top-bar-left">🔥 Kênh Săn Deal Flash Sale Shopee 1K, 9K, 29K Hàng Giờ</div>
+                <div class="top-bar-links">
+                    <a href="#" id="btnReloadLink">🔄 Làm mới</a>
+                    <a href="#" id="btnResetLink">Reset</a>
+                    <a href="#" id="btnUserLink">Hoàn tiền</a>
+                    <a href="https://shopee.vn/web" target="_blank">Tải ứng dụng</a>
                 </div>
             </div>
         </div>
 
-        <!-- Shopee Main Header -->
+        <!-- Main Header (Exact product.html style) -->
         <header class="shopee-main-header">
-            <div class="container-shopee">
-                <div class="header-content">
-                    <!-- Logo -->
-                    <a class="shopee-logo" href="index.html">
-                        🛒 Flash Sale
-                        <span class="badge-deal">1K</span>
-                    </a>
+            <div class="container header-content">
+                <a href="index.html" class="shopee-logo">
+                    <span>🛍️ Shopee</span>
+                    <span class="badge-deal">FLASH SALE</span>
+                </a>
 
-                    <!-- Search bar -->
-                    <div class="shopee-search-bar">
-                        <input id="qDesktop" type="text" placeholder="Tìm sản phẩm Deal 1K, 9K, 29K..." autocomplete="off" />
-                        <button type="button">🔍 Tìm</button>
-                    </div>
-
-                    <!-- Clock -->
-                    <span id="currentMillisWithMillis" class="d-none d-lg-inline"></span>
-                    <script>
-                        function updateCurrentMillisWithMillis() {
-                            const el = document.getElementById('currentMillisWithMillis');
-                            if (!el) return;
-                            const now = new Date();
-                            const t = now.toLocaleTimeString('en-US', { hour12: false });
-                            const ms = now.getMilliseconds().toString().padStart(3, '0');
-                            el.innerHTML = `⏰ ${t}.<span class="millis">${ms}</span>`;
-                        }
-                        setInterval(updateCurrentMillisWithMillis, 100);
-                    </script>
-
-                    <!-- Action buttons -->
-                    <div class="header-actions">
-                        <button id="btnSearch" class="header-btn d-md-none">🔍</button>
-                        <button id="btnReload" class="header-btn btn-reload">
-                            <span id="reloadText">🔄 Làm mới</span>
-                            <span id="reloadSpinner" class="loading-spinner d-none"></span>
-                        </button>
-                        <button id="btnReset" class="header-btn btn-reset">Reset</button>
-                        <button id="btnUser" class="header-btn d-none d-md-flex">Đăng nhập</button>
-                    </div>
+                <div class="shopee-search-bar">
+                    <input id="qDesktop" type="text" placeholder="Săn Deal 1K, 9K, Flash Sale..." autocomplete="off" />
+                    <button type="button" id="btnSearchShopee">Tìm kiếm</button>
                 </div>
+
+                <a href="#tabFav" class="header-cart-icon" id="cartFavBtn" title="Danh sách yêu thích">
+                    🛒
+                    <span class="cart-badge" id="countFavHeader">0</span>
+                </a>
             </div>
         </header>
 
-        <main class="container-shopee mt-2">
+        <!-- Hidden proxy elements to preserve full compatibility with obfuscated JS -->
+        <div class="d-none">
+            <button id="btnReload"><span id="reloadText">🔄 Làm mới</span><span id="reloadSpinner" class="loading-spinner d-none"></span></button>
+            <button id="btnReset">Reset</button>
+            <button id="btnUser">Đăng nhập</button>
+            <button id="btnSearch">🔍</button>
+            <span id="currentMillisWithMillis"></span>
+        </div>
+
+        <script>
+            // Header interaction wiring
+            document.addEventListener('DOMContentLoaded', function() {
+                var btnReload = document.getElementById('btnReload');
+                var btnReloadLink = document.getElementById('btnReloadLink');
+                if (btnReloadLink && btnReload) {
+                    btnReloadLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        btnReload.click();
+                    });
+                }
+
+                var btnReset = document.getElementById('btnReset');
+                var btnResetLink = document.getElementById('btnResetLink');
+                if (btnResetLink && btnReset) {
+                    btnResetLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        btnReset.click();
+                    });
+                }
+
+                var btnUser = document.getElementById('btnUser');
+                var btnUserLink = document.getElementById('btnUserLink');
+                if (btnUserLink && btnUser) {
+                    btnUserLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        btnUser.click();
+                    });
+                }
+
+                var btnSearchShopee = document.getElementById('btnSearchShopee');
+                var qDesktop = document.getElementById('qDesktop');
+                if (btnSearchShopee && qDesktop) {
+                    btnSearchShopee.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        var event = new Event('input', { bubbles: true });
+                        qDesktop.dispatchEvent(event);
+                    });
+                }
+
+                // Cart icon opens favorites tab
+                var cartFavBtn = document.getElementById('cartFavBtn');
+                if (cartFavBtn) {
+                    cartFavBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        var favTabBtn = document.querySelector('button[data-bs-target="#tabFav"]');
+                        if (favTabBtn) {
+                            favTabBtn.click();
+                            favTabBtn.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                }
+
+                // Sync countFav to countFavHeader in cart badge
+                var countFav = document.getElementById('countFav');
+                var countFavHeader = document.getElementById('countFavHeader');
+                if (countFav && countFavHeader) {
+                    var observer = new MutationObserver(function() {
+                        countFavHeader.textContent = countFav.textContent;
+                    });
+                    observer.observe(countFav, { childList: true, characterData: true, subtree: true });
+                }
+            });
+        </script>
+
+        <main class="container mt-2">
             <!-- Flash Sale Banner -->
             <div class="flash-sale-banner">
                 <div class="flash-banner-left">
@@ -846,7 +924,7 @@
                     <div class="col-md-6">
                         <div class="search-container">
                             <span class="search-icon">🔍</span>
-                            <input id="qDesktop" class="form-control search-input" placeholder="Tìm tên sản phẩm bạn cần mua" />
+                            <input id="qDesktopToolbar" class="form-control search-input" placeholder="Tìm tên sản phẩm bạn cần mua" oninput="document.getElementById('qDesktop').value = this.value; document.getElementById('qDesktop').dispatchEvent(new Event('input', {bubbles:true}));" />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -951,7 +1029,7 @@
         <div class="floating-actions">
             <button id="btnScrollTop" class="fab fab-secondary" title="Về đầu trang">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 1 0 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                    <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
                 </svg>
             </button>
         </div>
@@ -1094,6 +1172,8 @@
         </script>
         <noscript><img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=250748234377264&ev=PageView&noscript=1" /></noscript>
         <!-- End Meta Pixel Code -->
+    </body>
+</html>
     </body>
 </html>
     </body>
